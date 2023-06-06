@@ -1,0 +1,25 @@
+---
+- name: Creating a directory and creating empty files in that directory
+  hosts: friends
+  become: true
+  remote_user: ansible
+  tasks:
+  - name: create a directory
+    file:
+     path: /home/ansible/nuthna_dir
+     #path: /sample
+     state: directory
+     mode: 0755
+     #owner: root
+     #group: root
+  - name: create files in the directory
+    file:
+     #path: /sample/efile01
+     #src: /home/ansible/nuthna_dir
+     #dest: /home/ansible/nuthna_dir/sree.txt
+     path: /home/ansible/nuthna_dir/sree.txt
+     state: touch
+     mode: 0755
+     #owner: root
+     #group: ansible
+...
