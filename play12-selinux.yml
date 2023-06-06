@@ -1,0 +1,19 @@
+---
+    - name: \remote line from /etc/sudoers
+      hosts: 192.168.35.100 
+      gather_facts: no
+      become: true
+      remote_user: ansible
+      tasks: 
+      #- name: Replace
+      #  lineinfile:
+      #   path: /etc/sudoers
+      #   regexp: ^ansible
+      #   state: absent
+      #   backup: yes
+      - name: Disable Selinux
+        lineinfile:
+         path: /etc/selinux/config
+         regexp: ^sELINUX=
+         line: "SELINUX=disabled"
+...
